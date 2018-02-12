@@ -12,12 +12,16 @@ class Main(QWidget):
     def __init__(self):
         self.surahs = json.load(open("surah.json"))
         self.surahs_by_index = {int(value['index']): key for (key, value) in self.surahs.items()}
+
         super(Main, self).__init__()
         loadUi("everyAyah.ui", self)
+
         self.setWindowTitle("Every Ayah")
+
         self.downloadBtn.clicked.connect(self.on_download_btn_clicked)
         self.browseBtn.clicked.connect(self.on_browse_btn_clicked)
         self.surahComboBox.currentIndexChanged.connect(self.on_surah_cmbox_index_changed)
+
         self.surahComboBox.insertItems(0, self.surahs_by_index.values())
         self.on_surah_cmbox_index_changed()
 
@@ -42,6 +46,7 @@ class Main(QWidget):
         self.lineEditTo.setText(to_str)
         self.lineEditFrom.setValidator(QIntValidator(from_num, to_num, self))
         self.lineEditTo.setValidator(QIntValidator(from_num, to_num, self))
+
 
 app = QApplication(sys.argv)
 w = Main()

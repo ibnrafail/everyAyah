@@ -77,6 +77,9 @@
       <property name="text">
        <string/>
       </property>
+      <property name="maxLength">
+       <number>3</number>
+      </property>
      </widget>
      <widget class="QLineEdit" name="lineEditFrom">
       <property name="geometry">
@@ -89,6 +92,9 @@
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="maxLength">
+       <number>3</number>
       </property>
      </widget>
     </widget>

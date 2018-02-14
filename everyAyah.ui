@@ -65,36 +65,36 @@
        <string>To</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditTo">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>40</y>
-        <width>41</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="maxLength">
-       <number>3</number>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEditFrom">
+     <widget class="QSpinBox" name="spinBoxFrom">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>41</width>
-        <height>20</height>
+        <width>45</width>
+        <height>27</height>
        </rect>
       </property>
-      <property name="text">
-       <string/>
+      <property name="minimum">
+       <number>1</number>
       </property>
-      <property name="maxLength">
-       <number>3</number>
+      <property name="maximum">
+       <number>286</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxTo">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>40</y>
+        <width>45</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>286</number>
       </property>
      </widget>
     </widget>

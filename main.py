@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog
 from PyQt5.uic import loadUi
 import json
 from urllib.request import urlretrieve
+from collections import OrderedDict
 
 # 0 problem in line edit
 
@@ -13,18 +14,20 @@ class Main(QWidget):
     def __init__(self):
         super(Main, self).__init__()
         loadUi("everyAyah.ui", self)
-
         self.surahs = json.load(open("surah.json"))
-        self.surahs_by_index = {int(value['index']): key for (key, value) in self.surahs.items()}
-
+        self.surahs_by_index = OrderedDict(sorted({int(value['index']): key for (key, value) in self.surahs.items()}.items()))
         self.setWindowTitle("Every Ayah")
 
         self.downloadBtn.clicked.connect(self.on_download_btn_clicked)
         self.browseBtn.clicked.connect(self.on_browse_btn_clicked)
         self.surahComboBox.currentIndexChanged.connect(self.on_surah_cmbox_index_changed)
+        self.spinBoxTo.valueChanged.connect(self.on_spin_box_to_value_changed)
+        self.spinBoxFrom.valueChanged.connect(self.on_spin_box_from_value_changed)
 
         self.surahComboBox.insertItems(0, self.surahs_by_index.values())
         self.on_surah_cmbox_index_changed()
+        self.spinBoxToPreviousValue = self.spinBoxTo.value()
+        self.spinBoxFromPreviousValue = self.spinBoxFrom.value()
 
     @pyqtSlot()
     def on_download_btn_clicked(self):
@@ -40,9 +43,9 @@ class Main(QWidget):
         destination += "/"
 
         for i in range(from_int, to_int + 1):
-            url = "http://www.everyayah.com/data/MaherAlMuaiqly128kbps/" + "{0:0>3}".format(i) + "{0:0>3}".format(index) + ".mp3"
+            url = "http://www.everyayah.com/data/MaherAlMuaiqly128kbps/" + "{0:0>3}".format(index) + "{0:0>3}".format(i) + ".mp3"
             print(url)
-            urlretrieve(url, destination + str(i) + "_" + str(index) + ".mp3")
+            urlretrieve(url, destination + str(index) + "_" + str(i) + ".mp3")
 
     @pyqtSlot()
     def on_browse_btn_clicked(self):
@@ -58,7 +61,20 @@ class Main(QWidget):
 
         self.spinBoxFrom.setValue(from_num)
         self.spinBoxTo.setValue(to_num)
-
+    
+    @pyqtSlot()
+    def on_spin_box_to_value_changed(self):
+    	if self.spinBoxTo.value() < self.spinBoxFrom.value():
+    		self.spinBoxTo.setValue(self.spinBoxToPreviousValue)
+    	else:
+    		self.spinBoxToPreviousValue = self.spinBoxTo.value()
+    
+    @pyqtSlot()
+    def on_spin_box_from_value_changed(self):
+    	if self.spinBoxTo.value() < self.spinBoxFrom.value():
+    		self.spinBoxFrom.setValue(self.spinBoxFromPreviousValue)
+    	else:
+    		self.spinBoxFromPreviousValue = self.spinBoxFrom.value()
 
 app = QApplication(sys.argv)
 w = Main()

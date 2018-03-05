@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>309</width>
-    <height>267</height>
+    <width>343</width>
+    <height>311</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
@@ -23,13 +23,16 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>20</y>
-        <width>91</width>
+        <y>30</y>
+        <width>101</width>
         <height>22</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">combobox-popup: 0;</string>
+      </property>
+      <property name="currentIndex">
+       <number>-1</number>
       </property>
      </widget>
     </widget>
@@ -44,7 +47,7 @@
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>31</width>
+        <width>51</width>
         <height>16</height>
        </rect>
       </property>
@@ -57,7 +60,7 @@
        <rect>
         <x>70</x>
         <y>20</y>
-        <width>21</width>
+        <width>41</width>
         <height>16</height>
        </rect>
       </property>
@@ -70,7 +73,7 @@
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>45</width>
+        <width>51</width>
         <height>27</height>
        </rect>
       </property>
@@ -86,7 +89,7 @@
        <rect>
         <x>70</x>
         <y>40</y>
-        <width>45</width>
+        <width>51</width>
         <height>27</height>
        </rect>
       </property>
@@ -109,23 +112,16 @@
        <rect>
         <x>10</x>
         <y>30</y>
-        <width>151</width>
+        <width>201</width>
         <height>22</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">combobox-popup: 0;</string>
       </property>
-      <item>
-       <property name="text">
-        <string>Maher Al-Muaiqly</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Abu Bakr Ash-Shaatree</string>
-       </property>
-      </item>
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
      </widget>
     </widget>
    </item>
@@ -134,36 +130,42 @@
      <property name="title">
       <string>Destination</string>
      </property>
-     <widget class="QPushButton" name="browseBtn">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Browse</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEditFilePath">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>20</y>
-        <width>181</width>
-        <height>20</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QPushButton" name="downloadBtn">
-     <property name="text">
-      <string>Download</string>
-     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="1">
+       <widget class="QLabel" name="progress_label">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="browseBtn">
+        <property name="text">
+         <string>Browse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="downloadBtn">
+        <property name="text">
+         <string>Download</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QProgressBar" name="progressBar">
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditFilePath"/>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
